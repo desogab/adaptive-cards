@@ -1,0 +1,220 @@
+{
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "type": "AdaptiveCard",
+  "version": "1.4",
+  "body": [
+    {
+      "type": "Container",
+      "style": "emphasis",
+      "items": [
+        {
+          "type": "ColumnSet",
+          "columns": [
+            {
+              "type": "Column",
+              "width": "auto",
+              "items": [
+                {
+                  "type": "Image",
+                  "url": "https://about.gitlab.com/images/press/logo/png/gitlab-icon-rgb.png",
+                  "size": "Small",
+                  "width": "32px"
+                }
+              ]
+            },
+            {
+              "type": "Column",
+              "width": "stretch",
+              "items": [
+                {
+                  "type": "TextBlock",
+                  "text": "🚀 GitLab Push Event",
+                  "weight": "Bolder",
+                  "size": "Medium",
+                  "color": "Accent"
+                },
+                {
+                  "type": "TextBlock",
+                  "text": "Gabriel Desouza (@desogab) pushed to repository",
+                  "size": "Small",
+                  "spacing": "None",
+                  "isSubtle": true
+                }
+              ]
+            },
+            {
+              "type": "Column",
+              "width": "auto",
+              "items": [
+                {
+                  "type": "Image",
+                  "url": "https://avatars.githubusercontent.com/u/1234567?v=4",
+                  "size": "Small",
+                  "style": "Person"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Container",
+      "spacing": "Medium",
+      "items": [
+        {
+          "type": "TextBlock",
+          "text": "📁 **My Awesome Project**",
+          "size": "Large",
+          "weight": "Bolder",
+          "wrap": true
+        },
+        {
+          "type": "TextBlock",
+          "text": "desogab/my-awesome-project",
+          "size": "Small",
+          "color": "Accent",
+          "spacing": "None"
+        }
+      ]
+    },
+    {
+      "type": "FactSet",
+      "spacing": "Medium",
+      "facts": [
+        {
+          "title": "👤 User:",
+          "value": "Gabriel Desouza (@desogab)"
+        },
+        {
+          "title": "🌿 Branch:",
+          "value": "main"
+        },
+        {
+          "title": "📊 Commits:",
+          "value": "1 commit"
+        },
+        {
+          "title": "🔒 Protection:",
+          "value": "🔒 Protected"
+        },
+        {
+          "title": "🆔 Project:",
+          "value": "#15"
+        }
+      ]
+    },
+    {
+      "type": "Container",
+      "spacing": "Medium",
+      "items": [
+        {
+          "type": "TextBlock",
+          "text": "📝 **Latest Commit:**",
+          "weight": "Bolder",
+          "size": "Medium"
+        },
+        {
+          "type": "Container",
+          "items": [
+            {
+              "type": "TextBlock",
+              "text": "**feat: add new authentication system**",
+              "wrap": true,
+              "weight": "Bolder"
+            },
+            {
+              "type": "TextBlock",
+              "text": "Implemented OAuth2 integration with GitLab\nAdded user session management\nUpdated security middleware",
+              "wrap": true,
+              "spacing": "None",
+              "maxLines": 3
+            },
+            {
+              "type": "ColumnSet",
+              "spacing": "Small",
+              "columns": [
+                {
+                  "type": "Column",
+                  "width": "stretch",
+                  "items": [
+                    {
+                      "type": "TextBlock",
+                      "text": "👤 Gabriel Desouza",
+                      "size": "Small",
+                      "color": "Accent"
+                    }
+                  ]
+                },
+                {
+                  "type": "Column",
+                  "width": "auto",
+                  "items": [
+                    {
+                      "type": "TextBlock",
+                      "text": "🕒 10/07/2025 14:51",
+                      "size": "Small",
+                      "isSubtle": true
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Container",
+      "spacing": "Medium",
+      "items": [
+        {
+          "type": "TextBlock",
+          "text": "📊 **File Changes:**",
+          "weight": "Bolder",
+          "size": "Small"
+        },
+        {
+          "type": "FactSet",
+          "spacing": "Small",
+          "facts": [
+            {
+              "title": "➕ Added:",
+              "value": "2 files"
+            },
+            {
+              "title": "📝 Modified:",
+              "value": "2 files"
+            },
+            {
+              "title": "➖ Removed:",
+              "value": "1 file"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "type": "Action.OpenUrl",
+      "title": "🏠 Open Repository",
+      "url": "https://gitlab.com/desogab/my-awesome-project"
+    },
+    {
+      "type": "Action.OpenUrl",
+      "title": "🔍 View Commit",
+      "url": "https://gitlab.com/desogab/my-awesome-project/-/commit/da1560886d4f094c3e6c9ef40349f7d38b5d27d7"
+    },
+    {
+      "type": "Action.OpenUrl",
+      "title": "📋 Branch History",
+      "url": "https://gitlab.com/desogab/my-awesome-project/-/commits/main"
+    },
+    {
+      "type": "Action.OpenUrl",
+      "title": "📧 Contact User",
+      "url": "mailto:gabriel@example.com"
+    }
+  ]
+}

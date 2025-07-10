@@ -1,0 +1,220 @@
+{
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "type": "AdaptiveCard",
+  "version": "1.4",
+  "body": [
+    {
+      "type": "Container",
+      "style": "emphasis",
+      "items": [
+        {
+          "type": "ColumnSet",
+          "columns": [
+            {
+              "type": "Column",
+              "width": "auto",
+              "items": [
+                {
+                  "type": "Image",
+                  "url": "https://about.gitlab.com/images/press/logo/png/gitlab-icon-rgb.png",
+                  "size": "Small",
+                  "width": "32px"
+                }
+              ]
+            },
+            {
+              "type": "Column",
+              "width": "stretch",
+              "items": [
+                {
+                  "type": "TextBlock",
+                  "text": "🚀 GitLab Push Event",
+                  "weight": "Bolder",
+                  "size": "Medium",
+                  "color": "Accent"
+                },
+                {
+                  "type": "TextBlock",
+                  "text": "${user_name} (@${user_username}) pushed to repository",
+                  "size": "Small",
+                  "spacing": "None",
+                  "isSubtle": true
+                }
+              ]
+            },
+            {
+              "type": "Column",
+              "width": "auto",
+              "items": [
+                {
+                  "type": "Image",
+                  "url": "${user_avatar}",
+                  "size": "Small",
+                  "style": "Person"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Container",
+      "spacing": "Medium",
+      "items": [
+        {
+          "type": "TextBlock",
+          "text": "📁 **${project.name}**",
+          "size": "Large",
+          "weight": "Bolder",
+          "wrap": true
+        },
+        {
+          "type": "TextBlock",
+          "text": "${project.path_with_namespace}",
+          "size": "Small",
+          "color": "Accent",
+          "spacing": "None"
+        }
+      ]
+    },
+    {
+      "type": "FactSet",
+      "spacing": "Medium",
+      "facts": [
+        {
+          "title": "👤 User:",
+          "value": "${user_name} (@${user_username})"
+        },
+        {
+          "title": "🌿 Branch:",
+          "value": "${replace(ref, 'refs/heads/', '')}"
+        },
+        {
+          "title": "📊 Commits:",
+          "value": "${if(equals(total_commits_count, 1), '1 commit', concat(total_commits_count, ' commits'))}"
+        },
+        {
+          "title": "🔒 Protection:",
+          "value": "${if(ref_protected, '🔒 Protected', '🔓 Unprotected')}"
+        },
+        {
+          "title": "🆔 Project:",
+          "value": "#${project_id}"
+        }
+      ]
+    },
+    {
+      "type": "Container",
+      "spacing": "Medium",
+      "items": [
+        {
+          "type": "TextBlock",
+          "text": "📝 **Latest Commit:**",
+          "weight": "Bolder",
+          "size": "Medium"
+        },
+        {
+          "type": "Container",
+          "items": [
+            {
+              "type": "TextBlock",
+              "text": "**${commits[0].title}**",
+              "wrap": true,
+              "weight": "Bolder"
+            },
+            {
+              "type": "TextBlock",
+              "text": "${if(length(commits[0].message) > 150, concat(substring(commits[0].message, 0, 147), '...'), commits[0].message)}",
+              "wrap": true,
+              "spacing": "None",
+              "maxLines": 3
+            },
+            {
+              "type": "ColumnSet",
+              "spacing": "Small",
+              "columns": [
+                {
+                  "type": "Column",
+                  "width": "stretch",
+                  "items": [
+                    {
+                      "type": "TextBlock",
+                      "text": "👤 ${commits[0].author.name}",
+                      "size": "Small",
+                      "color": "Accent"
+                    }
+                  ]
+                },
+                {
+                  "type": "Column",
+                  "width": "auto",
+                  "items": [
+                    {
+                      "type": "TextBlock",
+                      "text": "🕒 ${formatDateTime(commits[0].timestamp, 'dd/MM/yyyy HH:mm')}",
+                      "size": "Small",
+                      "isSubtle": true
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Container",
+      "spacing": "Medium",
+      "items": [
+        {
+          "type": "TextBlock",
+          "text": "📊 **File Changes:**",
+          "weight": "Bolder",
+          "size": "Small"
+        },
+        {
+          "type": "FactSet",
+          "spacing": "Small",
+          "facts": [
+            {
+              "title": "➕ Added:",
+              "value": "${length(commits[0].added)} files"
+            },
+            {
+              "title": "📝 Modified:",
+              "value": "${length(commits[0].modified)} files"
+            },
+            {
+              "title": "➖ Removed:",
+              "value": "${length(commits[0].removed)} files"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "type": "Action.OpenUrl",
+      "title": "🏠 Open Repository",
+      "url": "${project.web_url}"
+    },
+    {
+      "type": "Action.OpenUrl",
+      "title": "🔍 View Commit",
+      "url": "${commits[0].url}"
+    },
+    {
+      "type": "Action.OpenUrl",
+      "title": "📋 Branch History",
+      "url": "${project.web_url}/-/commits/${replace(ref, 'refs/heads/', '')}"
+    },
+    {
+      "type": "Action.OpenUrl",
+      "title": "📧 Contact User",
+      "url": "mailto:${user_email}"
+    }
+  ]
+}

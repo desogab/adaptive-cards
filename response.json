@@ -1,0 +1,45 @@
+{
+  "object_kind": "push",
+  "event_name": "push",
+  "before": "95790bf891e76fee5e1747ab589903a6a1f80f22",
+  "after": "da1560886d4f094c3e6c9ef40349f7d38b5d27d7",
+  "ref": "refs/heads/main",
+  "ref_protected": true,
+  "checkout_sha": "da1560886d4f094c3e6c9ef40349f7d38b5d27d7",
+  "user_id": 4,
+  "user_name": "Gabriel Desouza",
+  "user_username": "desogab",
+  "user_email": "gabriel@example.com",
+  "user_avatar": "https://avatars.githubusercontent.com/u/1234567?v=4",
+  "project_id": 15,
+  "project": {
+    "id": 15,
+    "name": "My Awesome Project",
+    "description": "Sample project for testing",
+    "web_url": "https://gitlab.com/desogab/my-awesome-project",
+    "avatar_url": null,
+    "git_ssh_url": "git@gitlab.com:desogab/my-awesome-project.git",
+    "git_http_url": "https://gitlab.com/desogab/my-awesome-project.git",
+    "namespace": "desogab",
+    "visibility_level": 0,
+    "path_with_namespace": "desogab/my-awesome-project",
+    "default_branch": "main"
+  },
+  "commits": [
+    {
+      "id": "da1560886d4f094c3e6c9ef40349f7d38b5d27d7",
+      "message": "feat: add new authentication system\n\nImplemented OAuth2 integration with GitLab\nAdded user session management\nUpdated security middleware",
+      "title": "feat: add new authentication system",
+      "timestamp": "2025-07-10T14:51:43+00:00",
+      "url": "https://gitlab.com/desogab/my-awesome-project/-/commit/da1560886d4f094c3e6c9ef40349f7d38b5d27d7",
+      "author": {
+        "name": "Gabriel Desouza",
+        "email": "gabriel@example.com"
+      },
+      "added": ["src/auth/oauth.js", "src/middleware/auth.js"],
+      "modified": ["src/app.js", "package.json"],
+      "removed": ["src/old-auth.js"]
+    }
+  ],
+  "total_commits_count": 1
+}
