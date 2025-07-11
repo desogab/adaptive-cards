@@ -28,14 +28,14 @@
               "items": [
                 {
                   "type": "TextBlock",
-                  "text": "🚀 GitLab Push Event",
+                  "text": "${eventIcon} GitLab Push Event",
                   "weight": "Bolder",
                   "size": "Medium",
                   "color": "Accent"
                 },
                 {
                   "type": "TextBlock",
-                  "text": "${user_name} (@${user_username}) pushed to repository",
+                  "text": "${userDisplayName} pushed to repository",
                   "size": "Small",
                   "spacing": "None",
                   "isSubtle": true
@@ -48,7 +48,7 @@
               "items": [
                 {
                   "type": "Image",
-                  "url": "${user_avatar}",
+                  "url": "${userAvatar}",
                   "size": "Small",
                   "style": "Person"
                 }
@@ -64,14 +64,14 @@
       "items": [
         {
           "type": "TextBlock",
-          "text": "📁 **${project.name}**",
+          "text": "📁 **${projectName}**",
           "size": "Large",
           "weight": "Bolder",
           "wrap": true
         },
         {
           "type": "TextBlock",
-          "text": "${project.path_with_namespace}",
+          "text": "${projectFullPath}",
           "size": "Small",
           "color": "Accent",
           "spacing": "None"
@@ -84,23 +84,23 @@
       "facts": [
         {
           "title": "👤 User:",
-          "value": "${user_name} (@${user_username})"
+          "value": "${userDisplayName}"
         },
         {
           "title": "🌿 Branch:",
-          "value": "${replace(ref, 'refs/heads/', '')}"
+          "value": "${branchName}"
         },
         {
           "title": "📊 Commits:",
-          "value": "${if(equals(total_commits_count, 1), '1 commit', concat(total_commits_count, ' commits'))}"
+          "value": "${commitCountText}"
         },
         {
           "title": "🔒 Protection:",
-          "value": "${if(ref_protected, '🔒 Protected', '🔓 Unprotected')}"
+          "value": "${protectionStatus}"
         },
         {
           "title": "🆔 Project:",
-          "value": "#${project_id}"
+          "value": "#${projectId}"
         }
       ]
     },
@@ -119,13 +119,13 @@
           "items": [
             {
               "type": "TextBlock",
-              "text": "**${commits[0].title}**",
+              "text": "**${commitTitle}**",
               "wrap": true,
               "weight": "Bolder"
             },
             {
               "type": "TextBlock",
-              "text": "${if(length(commits[0].message) > 150, concat(substring(commits[0].message, 0, 147), '...'), commits[0].message)}",
+              "text": "${shortCommitMessage}",
               "wrap": true,
               "spacing": "None",
               "maxLines": 3
@@ -140,7 +140,7 @@
                   "items": [
                     {
                       "type": "TextBlock",
-                      "text": "👤 ${commits[0].author.name}",
+                      "text": "👤 ${commitAuthor}",
                       "size": "Small",
                       "color": "Accent"
                     }
@@ -152,7 +152,7 @@
                   "items": [
                     {
                       "type": "TextBlock",
-                      "text": "🕒 ${formatDateTime(commits[0].timestamp, 'dd/MM/yyyy HH:mm')}",
+                      "text": "🕒 ${formattedTimestamp}",
                       "size": "Small",
                       "isSubtle": true
                     }
@@ -180,15 +180,15 @@
           "facts": [
             {
               "title": "➕ Added:",
-              "value": "${length(commits[0].added)} files"
+              "value": "${filesAdded} files"
             },
             {
               "title": "📝 Modified:",
-              "value": "${length(commits[0].modified)} files"
+              "value": "${filesModified} files"
             },
             {
               "title": "➖ Removed:",
-              "value": "${length(commits[0].removed)} files"
+              "value": "${filesRemoved} files"
             }
           ]
         }
@@ -199,22 +199,22 @@
     {
       "type": "Action.OpenUrl",
       "title": "🏠 Open Repository",
-      "url": "${project.web_url}"
+      "url": "${projectUrl}"
     },
     {
       "type": "Action.OpenUrl",
       "title": "🔍 View Commit",
-      "url": "${commits[0].url}"
+      "url": "${commitUrl}"
     },
     {
       "type": "Action.OpenUrl",
       "title": "📋 Branch History",
-      "url": "${project.web_url}/-/commits/${replace(ref, 'refs/heads/', '')}"
+      "url": "${branchCommitsUrl}"
     },
     {
       "type": "Action.OpenUrl",
       "title": "📧 Contact User",
-      "url": "mailto:${user_email}"
+      "url": "mailto:${userEmail}"
     }
   ]
 }
